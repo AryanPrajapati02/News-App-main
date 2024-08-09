@@ -24,7 +24,22 @@ const news = document.querySelector("#news1")
 const domains = document.querySelector('.domain')
 const url =`https://newsdata.io/api/1/latest?apikey=pub_496717bedb641029d4be124fcb24ce74be212&domain=`
 const domainBtn  = document.querySelectorAll('.domain-btn')
+const menu = document.querySelector('.ri-menu-5-line')
+const menuItem =  document.querySelector('.mobile-nav')
+const close = document.querySelector('.ri-close-large-line')
 
+let flag = false
+menu.addEventListener('click', ()=>{
+  flag = !flag
+
+    menuItem.style.display = 'block'
+ 
+})
+
+close.addEventListener('click', ()=>{
+  menuItem.style.display = 'none'
+  flag = !flag
+})
 
 const button = Array.from(domainBtn).map(elem => elem.textContent)
 async function domain(){
@@ -48,8 +63,10 @@ async function domain(){
             break;
          case 'BBC News':
             channel = 'bbc'
-            break;   
+            break; 
+
       }
+      
       
     
       domainBtn.forEach(elem => {
@@ -111,12 +128,13 @@ async function fetchData(channel) {
     const data = await response.json()
     console.log(data.results)
     data.results.forEach((elem)=>{
+      let truncatedTitle = elem.title.length > 50 ? elem.title.slice(0, 50) + '...' : elem.title;
    clutter+=  `  <div class="card">
                     <div class="card-image">
                       <img class="card-image" src="${elem.image_url}" alt="">
                   </div>
                     <div class="category"> ${elem.category} </div>
-                    <div class="heading"> ${elem.title}
+                    <div class="heading"> ${truncatedTitle}
                    </div>   
                 </div>`
       
@@ -130,6 +148,36 @@ async function fetchData(channel) {
 
 
 }
+async function TrendingNews() {
+  var clutter =''
+  try {
+
+    const response = await fetch('https://newsdata.io/api/1/latest?apikey=pub_496717bedb641029d4be124fcb24ce74be212')
+    const data = await response.json()
+    console.log(data.results)
+    data.results.forEach((elem)=>{
+      let truncatedTitle = elem.title.length > 50 ? elem.title.slice(0, 50) + '...' : elem.title;
+   clutter+=  `  <div class="card">
+                    <div class="card-image">
+                      <img class="card-image" src="${elem.image_url}" alt="">
+                  </div>
+                    <div class="category"> ${elem.category} </div>
+                    <div class="heading"> ${truncatedTitle}
+                   </div>   
+                </div>`
+      
+    })
+    document.querySelector('.news-container').innerHTML = clutter
+
+
+  } catch (e) {
+    console.log(e)
+  }
+
+
+}
+
+TrendingNews()
 
 
 

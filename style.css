@@ -27,6 +27,18 @@ html,body{
     position: fixed;
     z-index: 99;
 }
+#nav-items{
+    list-style: none;
+    margin: 5px;
+}
+#nav-items li{
+ 
+    margin-right: 2vw;
+}
+.ri-menu-5-line{
+    font-size: 24px;
+    display: none;
+}
 
 #nav h2{
     font-size: 34px;
@@ -53,9 +65,33 @@ html,body{
     color: gray;
 }
 
+
+.mobile-nav{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+    
+
+}
+.ri-close-large-line{
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+    top: 4vh;
+ left: 80vw;
+ /* text-align: center; */
+}
+
+
 #page1{
     width: 100%;
-    min-height: 100vh;
+    max-height: 100vh;
     padding: 0 0.7%;
     position: relative;
 }
@@ -319,3 +355,86 @@ html,body{
   margin-top: 5px;
   
 }
+
+.btn-shine{
+
+ 
+    padding: 12px 48px;
+    color: #000000;
+    background: linear-gradient(to right, #000000 0, rgb(255, 255, 255) 10%, #ded8d8 20%);
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+}   
+@keyframes shine{
+  0%
+   { background-position: 0}
+  60%
+   { background-position: 180px}
+  100%
+   { background-position: 180px}
+}
+@media screen and (max-width: 80rem) {
+    .news-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        width: 100%;
+      
+    
+    }
+    .card{
+        width: 45vw;
+        height: 30vh;
+        background-color: rgb(54, 53, 55);
+        margin: 10px;
+        border-radius: 10px;
+        padding: 15px;
+       
+    
+    }
+    .card-image{
+        width: 37vw;
+        height:25vw;
+        /* background-color: white; */
+        border-radius: 10px;
+       
+        object-fit: cover;
+        margin-bottom: 5px;
+        
+    
+    }
+ 
+    #nav-items li{
+     
+        display: none;
+    }
+    .ri-menu-5-line{
+        font-size: 24px;
+       
+        display: block;
+        margin-left: 20vw ;
+    }
+    #page1 h1{
+        text-transform: uppercase;
+        font-size:9em;
+        letter-spacing: -12px;
+        color: white;
+        position: absolute;
+        top: 1%;
+    
+    }
+    #page1{
+        width: 100%;
+    height: 20vh; 
+        padding: 0 0.7%;
+        position: relative;
+    }
+  }
