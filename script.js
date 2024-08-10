@@ -73,9 +73,11 @@ async function domain(){
       
       if(val ===elem.textContent ){
         elem.classList.add('active')
+          elem.classList.add('btn-shine')
 
       }else{
         elem.classList.remove('active')
+          elem.classList.remove('btn-shine')
       }
        
       })
